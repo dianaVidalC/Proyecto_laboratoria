@@ -9,7 +9,9 @@ var render = function (root) {
 var state = {
    user: null,
    email: null,
-   password: null };
+   password: null,
+   screen: null
+};
 
 var update = function () {
    render(root);

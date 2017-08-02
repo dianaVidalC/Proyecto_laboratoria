@@ -9,7 +9,8 @@ const render = (root)=>{
 const state = {
    user: null,
    email: null,
-   password:null,
+   password: null,
+   screen: null
 };
 
 const update = function (){
