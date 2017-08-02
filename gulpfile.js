@@ -114,3 +114,4 @@ gulp.task("serve", ['browser-sync'],() => {
    gulp.watch(sources.js,["js-watch"]);
    gulp.watch(sources.js,["fonts-watch"]);
 });
+gulp.task('run', [ 'html','sass','js', 'fonts','img','serve']);
