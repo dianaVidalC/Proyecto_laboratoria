@@ -18,7 +18,18 @@ const update = function (){
 
 $( _ => {
 
-  const root = $('#root');
-  render(root);
+  getJSON('api/user.json', (err, json) => {
+
+      if (err) { return alert(err.message);}
+
+      state.user = json;
+
+      const root = $('.root');
+      render(root);
+
+      console.log("holiboli");
+      console.log(state.user);
+    });
+
 
 })

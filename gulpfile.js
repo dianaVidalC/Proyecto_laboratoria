@@ -41,7 +41,7 @@ gulp.task('html', () => {
 gulp.task('sass', () => {
     gulp.src(sources.rootSass)
     .pipe(sass({
-        outputStyle:"compressed"
+        outputStyle:"uncompressed"
     }).on("error",sass.logError)).pipe(gulp.dest(config.dist+paths.assets+"css"));
 });
 
