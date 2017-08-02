@@ -1,8 +1,7 @@
 "use strict";
 const render = (root)=>{
    root.empty();
-
-   const section = $('<section class="components"> Holi Boli</section>');
+   const section = $('<section class="components">Maia Imprime </section>');
    root.append(section);
 };
 
@@ -18,18 +17,13 @@ const update = function (){
 
 $( _ => {
 
-  getJSON('api/user.json', (err, json) => {
-
-      if (err) { return alert(err.message);}
-
-      state.user = json;
-
-      const root = $('.root');
-      render(root);
-
-      console.log("holiboli");
-      console.log(state.user);
-    });
-
-
+  // $.getJSON('../../user.json',function(data){
+  //   state.user = data;
+  //
+  //
+  //
+  //   console.log(state.user);
+  // })
+  const root = $('.root');
+  render(root);
 })

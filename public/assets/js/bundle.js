@@ -1,50 +1,27 @@
 "use strict";
 var render = function (root) {
-      root.empty();
-
-      var section = $("<section class=\"components\"> Holi Boli</section>");
-      root.append(section);
+   root.empty();
+   var section = $("<section class=\"components\">Maia Imprime </section>");
+   root.append(section);
 };
 
 var state = {
-      user: null,
-      email: null,
-      password: null };
+   user: null,
+   email: null,
+   password: null };
 
 var update = function () {
-      render(root);
+   render(root);
 };
 
 $(function (_) {
-      getJSON("api/user.json", function (err, json) {
-            if (err) {
-                  return alert(err.message);
-            }
-
-            state.user = json;
-
-            var root = $(".root");
-            render(root);
-
-            console.log("holiboli");
-            console.log(state.user);
-      });
-
+   // $.getJSON('../../user.json',function(data){
+   //   state.user = data;
+   //
+   //
+   //
+   //   console.log(state.user);
+   // })
+   var root = $(".root");
+   render(root);
 });
-"use strict";
-
-var getJSON = function (url, cb) {
-  var xhr = new XMLHttpRequest();
-
-  xhr.addEventListener("load", function () {
-    if (xhr.status !== 200) {
-      return cb(new Error("Error loading JSON from " + url + "(" + xhr.status + ")"));
-    }
-
-    cb(null, xhr.response);
-  });
-
-  xhr.open("GET", url);
-  xhr.responseType = "json";
-  xhr.send();
-};
