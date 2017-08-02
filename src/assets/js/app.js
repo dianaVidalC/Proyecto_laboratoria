@@ -17,13 +17,13 @@ const update = function (){
 
 $( _ => {
 
-  // $.getJSON('../../user.json',function(data){
-  //   state.user = data;
-  //
-  //
-  //
-  //   console.log(state.user);
-  // })
+  $.getJSON('../../user.json',function(data){
+    state.user = data;
+
+
+
+    console.log(state.user);
+  })
   const root = $('.root');
   render(root);
-})
+});
