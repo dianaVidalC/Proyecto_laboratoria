@@ -1,29 +1,40 @@
 "use strict";
 const render = (root)=>{
    root.empty();
-   const section = $('<section class="components">Maia Imprime </section>');
+   const section = $('<div></div>');
+   section.append(header( _ => render(root)));
+
+   if (state.page == null) {
+    section.append(welcome( _ => render(root)));
+  } else if (state.page == 1) {
+    section.append(reloj( _ => render(root)));
+  } else if (state.page == 2) {
+    section.append(asistOk( _ => render(root)));
+  }
+
    root.append(section);
 };
 
-const state = {
-   user: null,
-   email: null,
-   password:null,
+const update = function (){
+  render(root);
 };
 
-const update = function (){
- render(root);
+const state = {
+  data: null,
+  user: null,
+  email: null,
+  password: null,
+  page: null,
+  time:null,
+
 };
 
 $( _ => {
+    getJSON("http://spreadsheets.google.com/feeds/list/1g9WAYhIOSlW3tqpFj1DO-JPeCHrz7Xk59iP6cEIzZxY/od6/public/values?alt=json",(err,json)=> {
+        if (err) { return alert(err.message);}
 
-  $.getJSON('../../user.json',function(data){
-    state.user = data;
-
-
-
-    console.log(state.user);
-  })
-  const root = $('.root');
-  render(root);
+        state.data = json;
+        const root = $('.root');
+        render(root);
+    });
 });
