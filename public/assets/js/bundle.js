@@ -39,6 +39,48 @@ $( _ => {
     });
 });
 
+'use strict';
+
+const filterByEmail= (stations,query) => {
+    console.log(stations.$t);
+    const select =stations.filter (function(index) {
+    return (index.$t.indexOf(query)!=-1);
+    })
+    console.log(select);
+    return   select;
+}
+
+'use strict';
+
+const getJSON = (url, cb) => {
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+
+    if (xhr.status !== 200) {
+      return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
+    }
+
+    cb(null, xhr.response);
+
+  });
+
+  xhr.open('GET', url);
+  xhr.responseType = 'json';
+  xhr.send();
+
+};
+
+const Verificar = (valor ) => {
+  if(valor =="1234"){
+    $('#btnEnviar').removeClass("disabled");
+  } else {
+    console.log("La contraseña no coincide");
+    $('#btnEnviar').addClass("disabled");
+  }
+};
+
 const asistOk = (update) => {
   console.log(state.time);
   const container_OK =$('<section class="container center-align"></section>');
@@ -222,45 +264,3 @@ const welcome = (update) => {
 
   return cont_welcome;
 }
-
-'use strict';
-
-const filterByEmail= (stations,query) => {
-    console.log(stations);
-    const select =stations.filter (function(index) {
-    return (index.$t.indexOf(query)!=-1);
-    })
-
-    return select;
-}
-
-'use strict';
-
-const getJSON = (url, cb) => {
-
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('load', () => {
-
-    if (xhr.status !== 200) {
-      return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
-    }
-
-    cb(null, xhr.response);
-
-  });
-
-  xhr.open('GET', url);
-  xhr.responseType = 'json';
-  xhr.send();
-
-};
-
-const Verificar = (valor ) => {
-  if(valor =="1234"){
-    $('#btnEnviar').removeClass("disabled");
-  } else {
-    console.log("La contraseña no coincide");
-    $('#btnEnviar').addClass("disabled");
-  }
-};
