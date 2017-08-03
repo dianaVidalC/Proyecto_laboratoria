@@ -1,7 +1,11 @@
 var express = require("express");
+var api = require("./api");
 const app = express();
 // var io = require('socket.io')(http);
-
+app.get('/api/news/', function (req, res) {
+    let news = api;
+    console.log(news);
+});
 app.use('/', express.static('public'));
 
 // app.get('/', function(req, res){
